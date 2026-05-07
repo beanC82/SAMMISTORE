@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác thực email - Sammi Store</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <!-- Container chính -->
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; margin: 20px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 20px; text-align: center; background-color: #f8e1e9; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h4 style="text-align: center;margin: 0;font-weight: 500;line-height: 1.38462;font-size: 1.625rem;font-family: 'Myriad Pro', sans-serif;color: black;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #000;color: #f26398;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;width: -webkit-fit-content;width: -moz-fit-content;width: fit-content;font-weight: 600;background: linear-gradient(to right, #d82e4d, #f26398);-webkit-background-clip: text;-webkit-text-fill-color: transparent;-webkit-background-clip: text;background-clip: text;cursor: pointer;">
+                    Sammi Stores
+                </h4>
+            </td>
+        </tr>
+        <!-- Nội dung chính -->
+        <tr>
+            <td style="padding: 30px; color: #333333;">
+                <h1 style="font-size: 24px; color: #d81b60; margin: 0 0 20px; text-align: center;">Xác thực địa chỉ email của bạn</h1>
+                <p style="font-size: 16px; line-height: 1.5; margin: 0 0 20px;">Kính gửi [{{customer_name}}],</p>
+                <p style="font-size: 16px; line-height: 1.5; margin: 0 0 20px;">Cảm ơn bạn đã đăng ký tại <strong>Sammi Store</strong>! Để hoàn tất quá trình đăng ký và bắt đầu trải nghiệm những sản phẩm mỹ phẩm tuyệt vời, vui lòng xác thực địa chỉ email của bạn bằng cách nhấp vào nút dưới đây:</p>
+                <!-- Nút xác thực -->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 20px 0;width: 100%;">
+                    <tr>
+                        <td style="text-align: center;">
+                            <a href="{{verify_url}}" style="display: inline-block; padding: 12px 30px; background-color: #d81b60; color: #ffffff; text-decoration: none; font-size: 16px; border-radius: 25px;">Xác thực email</a>
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-size: 14px; line-height: 1.5; color: #666666; margin: 0 0 20px;">Liên kết này sẽ hết hạn trong <strong>24 giờ</strong>. Nếu liên kết không hoạt động, bạn có thể yêu cầu một liên kết mới tại <a href="{{re_verify_url}}" style="color: #d81b60; text-decoration: none;">đây</a>.</p>
+                <p style="font-size: 14px; line-height: 1.5; color: #666666; margin: 0;">Nếu bạn không đăng ký tài khoản tại Sammi Store, xin vui lòng bỏ qua email này.</p>
+            </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px; text-align: center; background-color: #f8e1e9; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <p style="font-size: 14px; color: #333333; margin: 0 0 10px;">Trân trọng,</p>
+                <p style="font-size: 14px; color: #333333; margin: 0 0 10px;"><strong>Đội ngũ Sammi Store</strong></p>
+                <p style="font-size: 12px; color: #666666; margin: 0 0 10px;">
+                    <a href="https://sammistore.com" style="color: #d81b60; text-decoration: none;">sammistore.com</a> |
+                    <a href="mailto:support@sammistore.com" style="color: #d81b60; text-decoration: none;">taduchoan5503@gmail.com</a>
+                </p>
+                <p style="font-size: 12px; color: #666666; margin: 0;">© 2025 Sammi Store. All rights reserved.</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

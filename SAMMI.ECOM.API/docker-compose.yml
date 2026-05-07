@@ -1,0 +1,79 @@
+# version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_sammi
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: sammi_ecommerce
+      MYSQL_USER: sammi
+      MYSQL_PASSWORD: 123@123aA
+    ports:
+      - "8003:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - sammi_network
+
+  redis:
+    image: redis:latest
+    container_name: redis_sammi
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - sammi_network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.0
+    container_name: es_sammi
+    restart: always
+    environment:
+    - discovery.type=single-node
+    - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+    volumes:
+    - es_data:/usr/share/elasticsearch/data
+    networks:
+    - sammi_network
+
+  sammi.ecom.api:
+    container_name: sammiecomapi
+    image: ${DOCKER_REGISTRY-}sammiecomapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8081
+    depends_on:
+      - mysql
+      - redis
+      - elasticsearch
+    environment:
+      # - ConnectionStrings__DefaultConnection=Server=mysql;Database=sammi_ecommerce;User=root;Password=123456;
+      - ConnectionStrings__DefaultConnection=Server=nozomi.proxy.rlwy.net;Port=14433;Database=SAMMI_ECOMMERCE;User=root;Password=vQBRYjzFbjlbnkRBUcJTGKaAyUHdikBc;
+      - RedisOptions__ConnectionString=redis:6379,abortConnect=false
+      - ElasticsearchConnection=http://elasticsearch:9200
+    volumes:
+      - dp-keys:/root/.aspnet/DataProtection-Keys
+    networks:
+      - sammi_network
+
+volumes:
+  mysql_data:
+  dp-keys:
+  es_data:
+
+networks:
+  sammi_network:
+    driver: bridge
+    
